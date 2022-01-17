@@ -1,13 +1,10 @@
-song1=""
-song2=""
+song=0;
 leftWristX=0;
 leftWristY=0;
-rightWristX=0;
-rightwristY=0;
+score=0;
 
 function preload() {
-    song1=loadSound("gangPlankGalleon.mp3");
-    song2=loadSound("kirbySong.mp3");
+
 }
 
 function setup(){ 
@@ -21,6 +18,14 @@ function setup(){
 
 function draw() {
     image(startVideo, 0 ,0, 600, 500)
+    fill("#FF0000");
+    stroke("#FF0000");
+    circle(leftWristX, leftWristY, 20);
+
+    fill("#FF0000");
+    stroke("#FF0000");
+    circle(rightWristX, rightWristY, 20);
+    
 }
 
 function modelLoaded() {
@@ -28,19 +33,6 @@ function modelLoaded() {
 }
 
 function gotPoses(results) {
-    if (results.length>0) {
-        console.log(results);
-
-        leftWristX=results[0].pose.leftWrist.x;
-        console.log("left wrist x value is "+leftWristX);
-
-        leftWristY=results[0].pose.leftWrist.y;
-     console.log("left wrist y value is "+leftWristY);
-
-        rightWristX=results[0].pose.rightWrist.x;
-        console.log("right wrist x value is "+rightWristX);
-
-        rightWristY=results[0].pose.rightWrist.y;
-        console.log("right wrist y value is "+rightWristY);
-    }
+    console.log(results);
+    document.getElementById("div_song_name").innerHTML=score
 }
